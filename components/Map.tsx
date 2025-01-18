@@ -17,7 +17,6 @@ export default function Map({ location, setLocation }: Props) {
     setLocation({
       latitude,
       longitude,
-      address: "Fetching address...",
     });
   };
 
