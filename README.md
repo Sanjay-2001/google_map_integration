@@ -1,6 +1,7 @@
 # Google Map Integration
 
-![App Logo](./assets/images/map-icon.png)
+<img src="./assets/images/map-icon.png" width="200" height="200" />
+
 
 ## Overview
 This project demonstrates the integration of Google Maps in a React Native application. The app provides the following features:
@@ -24,11 +25,10 @@ This project demonstrates the integration of Google Maps in a React Native appli
 ## Screenshots
 
 ### Location Permission Screen
-![Location Permission Screen](./assets/images/location-permission.jpg)
+<img src="./assets/images/location-permission.jpg" width="300" height="auto" />
 
 ### Map Screen
-![Map Screen](./assets/images/map-screen.jpg)
-
+<img src="./assets/images/map-screen.jpg" width="300" height="auto" />
 ---
 
 ## Installation and Setup
