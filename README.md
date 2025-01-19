@@ -1,50 +1,73 @@
-# Welcome to your Expo app 👋
+# Google Map Integration
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![App Logo](./assets/images/map-icon.png)
 
-## Get started
+## Overview
+This project demonstrates the integration of Google Maps in a React Native application. The app provides the following features:
 
-1. Install dependencies
+1. **Location Permission**: The app asks for location permission on the first screen.
+2. **Interactive Map**: Tapping on any location on the map displays its latitude, longitude, and address.
 
+---
+
+## Features
+
+### Location Permission Screen
+- Prompts the user to allow location access.
+
+### Interactive Map
+- Displays a Google Map.
+- On tapping a location, shows the latitude, longitude, and address.
+
+---
+
+## Screenshots
+
+### Location Permission Screen
+![Location Permission Screen](./assets/images/location-permission.jpg)
+
+### Map Screen
+![Map Screen](./assets/images/map-screen.jpg)
+
+---
+
+## Installation and Setup
+
+### Technologies Used
+- **React Native**: A framework for building native apps using React.
+- **Expo**: A platform for developing and building React Native apps.
+- **Google Maps API**: For interactive maps and geolocation.
+
+### Prerequisites
+- Install [Node.js](https://nodejs.org/).
+- Install the [Expo Go App](https://expo.dev/client) on your device.
+
+### Development Mode
+1. Clone this repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd google_map_integration
+   ```
+3. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+4. Start the project:
    ```bash
-    npx expo start
+   npx expo start
    ```
+5. Scan the QR code displayed in the terminal using the Expo Go app.
 
-In the output, you'll find options to open the app in a
+### Building the APK
+1. Place your API key in the android.config.googleMaps.apiKey field in the app.config.json file
+2. Create an Expo Application Services (EAS) account.
+3. Build the APK with the following command:
+   ```bash
+   eas build -p android --profile preview
+   ```
+4. Download the APK from the provided link after the build is complete.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
