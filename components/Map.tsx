@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default function Map({ location, setLocation }: Props) {
+  // function to set lattude and longitude
   const handlePress = async (event: any) => {
     const { latitude, longitude } = event.nativeEvent.coordinate;
 
@@ -25,6 +26,7 @@ export default function Map({ location, setLocation }: Props) {
       <MapView
         style={styles.map}
         initialRegion={{
+          // for India region
           latitude: 20.5937,
           longitude: 78.9629,
           latitudeDelta: 15,
@@ -50,8 +52,7 @@ export default function Map({ location, setLocation }: Props) {
 
 const styles = StyleSheet.create({
   mapBody: {
-    width: "100%",
-    height: "60%",
+    flex: 1,
   },
   map: {
     width: "100%",

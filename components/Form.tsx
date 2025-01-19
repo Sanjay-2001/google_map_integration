@@ -9,12 +9,18 @@ interface Props {
 
 const Form = ({ location }: Props) => {
   const [address, setAddress] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  //function to extract adress from latitude and longitude using reverse geocoding
   const reverseGeoCode = async (latitude: number, longitude: number) => {
+    setLoading(true);
     try {
       const result = await Location.reverseGeocodeAsync({
         latitude,
         longitude,
       });
+
+      //extracting address
       if (result.length > 0) {
         const { city, region, street, postalCode } = result[0];
         const address = `${street ? street + ", " : ""}${
@@ -24,6 +30,8 @@ const Form = ({ location }: Props) => {
       }
     } catch (error) {
       console.error("Error during reverse geocoding:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -35,36 +43,44 @@ const Form = ({ location }: Props) => {
 
   return (
     <View style={styles.form}>
-      <Text>Latitude:</Text>
+      <Text style={styles.label}>Latitude:</Text>
       <TextInput
         style={styles.input}
-        value={location.latitude ? location.latitude.toString() : ""}
+        value={location.latitude?.toString() || ""}
         editable={false}
       />
-      <Text>Longitude:</Text>
+      <Text style={styles.label}>Longitude:</Text>
       <TextInput
         style={styles.input}
-        value={location.longitude ? location.longitude.toString() : ""}
+        value={location.longitude?.toString() || ""}
         editable={false}
       />
-      <Text>Address:</Text>
-      <TextInput style={styles.input} value={address} editable={false} />
+      <Text style={styles.label}>Address:</Text>
+      <TextInput
+        style={styles.input}
+        value={!loading ? address : "Loading..."} //loader until address is recieved
+        editable={false}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   form: {
-    padding: 10,
-    width: "100%",
-    height: "40%",
+    flex: 1,
+  },
+  label: {
+    fontSize: 14,
+    color: "#555",
+    marginBottom: 5,
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#ddd",
     padding: 8,
-    marginVertical: 5,
     borderRadius: 5,
+    marginBottom: 10,
+    backgroundColor: "#f9f9f9",
   },
 });
 

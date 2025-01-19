@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import Map from "@/components/Map";
 import Form from "@/components/Form";
 import { LocationModel } from "@/models/location.model";
 import * as Location from "expo-location";
+import { Image } from "react-native";
 
 export default function Index() {
   const [location, setLocation] = useState<LocationModel>({
@@ -11,6 +12,7 @@ export default function Index() {
     longitude: null,
   });
 
+  //Permission for location
   useEffect(() => {
     const requestPermissions = async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
@@ -26,8 +28,19 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <Map location={location} setLocation={setLocation} />
-      <Form location={location} />
+      <View style={styles.mapContainer}>
+        <Map location={location} setLocation={setLocation} />
+      </View>
+      <View style={styles.titleContainer}>
+        <Image
+          source={require("@/assets/images/location-pin.webp")}
+          style={styles.icon}
+        />
+        <Text style={styles.title}>Location Details</Text>
+      </View>
+      <View style={styles.formContainer}>
+        <Form location={location} />
+      </View>
     </View>
   );
 }
@@ -35,6 +48,46 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: "flex",
+    backgroundColor: "#f8f9fa",
+    padding: 10,
+  },
+  mapContainer: {
+    flex: 2,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+    marginBottom: 15,
+  },
+  titleContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+    marginRight: 8,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+  },
+  formContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });
